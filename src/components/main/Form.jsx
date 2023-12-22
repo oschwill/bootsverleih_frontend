@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { BoatTypeContext, MaterialContext } from '../../context/Context';
 import { manipulateData } from '../../utils/fetchDataModel';
 
-const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm, id }) => {
+const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
   const [input, setInput] = useState({
     name: boatData && method === 'PUT' ? boatData.name : '',
     constructionYear: boatData && method === 'PUT' ? boatData.constructionYear : '',
@@ -35,7 +35,7 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm, id }) => 
     const form = new FormData(e.target);
 
     const response = await manipulateData(
-      `boats/data/${id ? id : ''}`,
+      `boats/data/${boatData ? boatData._id : ''}`,
       method,
       form,
       setErrorMessage
@@ -170,7 +170,7 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm, id }) => 
           <button className="bg-colorFour rounded-3xl p-6 hover:opacity-75">SENDEN</button>
         </form>
         {errorMessage && (
-          <p className="bg-red-200 ml-[25%] p-4 text-[1.5rem] w-full text-center font-bold text-red-700 absolute bottom-[30%]">
+          <p className="bg-red-200 ml-[25%] p-4 text-[1.5rem] w-full text-center font-bold text-red-700 absolute bottom-[15%]">
             {errorMessage}
           </p>
         )}
@@ -185,7 +185,6 @@ Form.propTypes = {
   setSuccess: PropTypes.func,
   setRefresh: PropTypes.func,
   setShowForm: PropTypes.func,
-  id: PropTypes.string,
 };
 
 export default Form;

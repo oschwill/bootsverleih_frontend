@@ -34,7 +34,6 @@ const Boats = () => {
     setMethod(_method);
 
     if (data) {
-      console.log('first');
       setEditBoatData(data);
     }
   };
