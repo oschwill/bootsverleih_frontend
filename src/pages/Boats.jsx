@@ -53,10 +53,10 @@ const Boats = () => {
 
   return (
     <>
-      <div className="pl-[10%] pr-[5%] pt-[1%] flex gap-20">
+      <div className="pl-[10%] pr-[5%] pt-[1%] flex items-center gap-20">
         <h2 className="text-[3rem]">Alle Boote</h2>
         <button
-          className="bg-colorFour rounded-3xl p-6 hover:opacity-75"
+          className="bg-colorFour rounded-3xl  h-12 w-[200px] hover:opacity-75"
           onClick={() => handleShowForm('POST', null)}
         >
           Neues Boot anlegen
