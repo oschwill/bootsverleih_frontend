@@ -53,7 +53,7 @@ const Boats = () => {
 
   return (
     <>
-      <div className="pl-[10%] pr-[5%] pt-[1%] flex items-center gap-20">
+      <div className="pl-[15%] pr-[5%] pt-[1%] flex items-center gap-20">
         <h2 className="text-[3rem]">Alle Boote</h2>
         <button
           className="bg-colorFour rounded-3xl  h-12 w-[200px] hover:opacity-75"
@@ -62,7 +62,7 @@ const Boats = () => {
           Neues Boot anlegen
         </button>
       </div>
-      <section className="grid grid-cols-3 gap-[5%] pl-[10%] pr-[5%] pt-[1%] bg-colorThree">
+      <section className="grid grid-cols-3 gap-[5%] pl-[15%] pr-[5%] pt-[1%] bg-colorThree">
         {boatData && boatData.length > 0 ? (
           boatData.map((boat) => {
             return (
