@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { BoatTypeContext, MaterialContext } from '../../context/Context';
 import { manipulateData } from '../../utils/fetchDataModel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
   const [input, setInput] = useState({
@@ -53,6 +55,13 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
   return (
     <>
       <article className="fixed top-0 h-full bg-gray-800/85 w-full z-5 flex justify-center pt-[10%]">
+        <FontAwesomeIcon
+          icon={faX}
+          style={{ height: '75px' }}
+          className="absolute top-[10%] right-[20%] cursor-pointer text-white hover:text-gray-400 font-bold"
+          onClick={() => setShowForm((cur) => !cur)}
+        />
+
         <form className="flex flex-col gap-6 text-[2rem]" onSubmit={handleForm}>
           <div className="flex gap-6">
             <label htmlFor="name" className="w-[35%] text-white">

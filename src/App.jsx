@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import Loading from './components/loading/Loading';
 import { fetchData, getDataLength } from './utils/fetchDataModel';
 import Boats from './pages/Boats';
+import Details from './pages/Details';
+import Reservations from './pages/Reservations';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +26,8 @@ const router = createBrowserRouter(
         }}
       />
       <Route path="/ships" element={<Boats />} loader={() => fetchData('boats/data')} />
+      <Route path="/details/:id" element={<Details />} />
+      <Route path="/reservation/" element={<Reservations />} />
     </Route>
   )
 );

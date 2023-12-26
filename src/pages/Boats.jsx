@@ -62,11 +62,11 @@ const Boats = () => {
           Neues Boot anlegen
         </button>
       </div>
-      <section className="grid grid-cols-3 gap-[5%] pl-[15%] pr-[5%] pt-[1%] bg-colorThree">
+      <section className="grid grid-cols-3 gap-[5%] pl-[15%] pr-[5%] pt-[1%]  bg-colorThree">
         {boatData && boatData.length > 0 ? (
           boatData.map((boat) => {
             return (
-              <article key={boat._id} className="text-center">
+              <article key={boat._id} className="text-center h-[500px]">
                 <Link to={`/details/${boat._id}`}>
                   {' '}
                   <img
@@ -78,7 +78,7 @@ const Boats = () => {
                     alt="boat image"
                     className="h-[50%] w-full object-cover"
                   />
-                  <h2 className="text-center text-[4rem]">{boat.name}</h2>
+                  <h2 className="text-center text-[3rem]">{boat.name}</h2>
                   <p>Baujahr: {boat.constructionYear}</p>
                   <p>Seriennummer: {boat.serialNumber}</p>
                   <p>Material: {boat.material.name}</p>

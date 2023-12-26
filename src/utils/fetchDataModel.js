@@ -4,9 +4,28 @@ export const fetchData = async (urlParameter) => {
   return data;
 };
 
-export const manipulateData = async (urlParameter, method, data, setErrorMessage) => {
+export const manipulateData = async (
+  urlParameter,
+  method,
+  data,
+  setErrorMessage,
+  isJson = false
+) => {
+  let headerContent = {
+    'Delete-Me': 'delete',
+  };
+
+  if (isJson) {
+    headerContent = {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    };
+  }
+
   const response = await fetch(`${import.meta.env.VITE_FETCH_URL}${urlParameter}`, {
     method: method,
+    mode: 'cors',
+    headers: headerContent,
     body: data,
   });
 
