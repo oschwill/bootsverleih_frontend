@@ -8,7 +8,7 @@ const RootLayout = () => {
     <>
       <Header />
       <NavBar />
-      <main className="bg-colorThree h-[90vh]">
+      <main className="bg-colorThree h-[100%]">
         <Outlet />
       </main>
       <Footer />

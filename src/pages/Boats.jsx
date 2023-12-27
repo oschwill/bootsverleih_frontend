@@ -62,7 +62,7 @@ const Boats = () => {
           Neues Boot anlegen
         </button>
       </div>
-      <section className="grid grid-cols-3 gap-[5%] pl-[15%] pr-[5%] pt-[1%]  bg-colorThree">
+      <section className="grid grid-cols-3 gap-[5%] pl-[15%] pr-[5%] pt-[1%] mb-[125px] bg-colorThree">
         {boatData && boatData.length > 0 ? (
           boatData.map((boat) => {
             return (
