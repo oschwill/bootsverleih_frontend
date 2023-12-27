@@ -13,6 +13,8 @@ export const manipulateData = async (
 ) => {
   let headerContent = {
     'Delete-Me': 'delete',
+    // 'Add-Me': 'add',
+    // 'Edit-Me': 'edit',
   };
 
   if (isJson) {

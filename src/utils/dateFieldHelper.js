@@ -9,10 +9,12 @@ export const lockDateInput = (date, val = 0) => {
   return dateAttributes;
 };
 
-export const handleStartDateField = (e, setStartDate, setHasStartDate) => {
+export const handleStartDateField = (e, setStartDate, setEndDate, setHasStartDate) => {
   setStartDate(e.target.value);
   // disable von edn Datum entfernen
   setHasStartDate(true);
+  // Wir setzten das Endfield zurück sobald das Startfield gesetzt wurde
+  setEndDate('');
   // nun locken wir das endDatumsfeld
   return lockDateInput(new Date(e.target.value), 1);
 };

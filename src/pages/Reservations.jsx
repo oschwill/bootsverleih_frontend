@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { handleStartDateField, lockDateInput } from '../utils/dateFieldHelper';
 import { fetchData, manipulateData } from '../utils/fetchDataModel';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const lockStartField = lockDateInput(new Date());
 let lockEndField = '';
@@ -102,6 +104,12 @@ const Reservations = () => {
     setRefresh(crypto.randomUUID());
   };
 
+  const deleteReservation = async (rnr) => {
+    await manipulateData(`reservation/data/${rnr}`, 'DELETE', null, setMessage, true);
+
+    setRefresh(crypto.randomUUID());
+  };
+
   return (
     <section className="grid grid-cols-2 pl-[15%] pr-[5%] pt-[5%]">
       <article className="flex flex-col gap-6">
@@ -119,7 +127,7 @@ const Reservations = () => {
               {...lockStartField}
               onKeyDown={(e) => e.preventDefault()}
               onChange={(e) =>
-                (lockEndField = handleStartDateField(e, setStartDate, setHasStartDate))
+                (lockEndField = handleStartDateField(e, setStartDate, setEndDate, setHasStartDate))
               }
             />
           </div>
@@ -180,14 +188,27 @@ const Reservations = () => {
         {reservedBoats && reservedBoats.length > 0 ? (
           reservedBoats.map((reserved) => {
             return (
-              <div className="border-2 p-2" key={reserved._id}>
-                <p>RNR: {reserved.reservationNumber}</p>
-                <p>Boot: {reserved.reservedBoat.name}</p>
-                <p>Baujahr: {reserved.reservedBoat.constructionYear}</p>
-                <p>Seriennummer: {reserved.reservedBoat.serialNumber}</p>
-                <p>Von: {new Date(reserved.reservedStartDate).toLocaleDateString('de-DE')}</p>
+              <div
+                key={reserved._id}
+                className="flex items-center justify-between w-full border-2 p-4"
+              >
+                <div>
+                  <p>RNR: {reserved.reservationNumber}</p>
+                  <p>Boot: {reserved.reservedBoat.name}</p>
+                  <p>Baujahr: {reserved.reservedBoat.constructionYear}</p>
+                  <p>Seriennummer: {reserved.reservedBoat.serialNumber}</p>
+                  <p>Von: {new Date(reserved.reservedStartDate).toLocaleDateString('de-DE')}</p>
 
-                <p>Bis: {new Date(reserved.reservedEndDate).toLocaleDateString('de-DE')}</p>
+                  <p>Bis: {new Date(reserved.reservedEndDate).toLocaleDateString('de-DE')}</p>
+                </div>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faX}
+                    style={{ height: '100px' }}
+                    className="text-red-700 font-semibold cursor-pointer hover:text-red-300"
+                    onClick={() => deleteReservation(reserved.reservationNumber)}
+                  />
+                </div>
               </div>
             );
           })
