@@ -105,8 +105,25 @@ const Reservations = () => {
   };
 
   const deleteReservation = async (rnr) => {
-    await manipulateData(`reservation/data/${rnr}`, 'DELETE', null, setMessage, true);
+    const response = await manipulateData(
+      `reservation/data/${rnr}`,
+      'DELETE',
+      null,
+      setMessage,
+      true
+    );
 
+    if (response) {
+      setMessage({
+        msg: 'Die Reservierung wurde erfolgreich gelöscht!',
+        bgColor: 'bg-green-100',
+        textColor: 'text-green-800',
+      });
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    }
     setRefresh(crypto.randomUUID());
   };
 
