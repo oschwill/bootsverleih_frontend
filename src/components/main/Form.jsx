@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
-import { BoatTypeContext, MaterialContext } from '../../context/Context';
+import { BoatTypeContext, LoginContext, MaterialContext } from '../../context/Context';
 import { manipulateData } from '../../utils/fetchDataModel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,7 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
 
   const materials = useContext(MaterialContext);
   const boatTypes = useContext(BoatTypeContext);
+  const userLogin = useContext(LoginContext);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -25,8 +26,6 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
 
     // validate
     const validateFields = Object.values(input).filter((item) => item === '');
-
-    console.log(validateFields);
 
     if (validateFields.length > 0) {
       console.log('ERROR');
@@ -40,7 +39,11 @@ const Form = ({ method, boatData, setSuccess, setRefresh, setShowForm }) => {
       `boats/data/${boatData ? boatData._id : ''}`,
       method,
       form,
-      setErrorMessage
+      setErrorMessage,
+      {
+        'Method-Information': method,
+        authorization: 'Basic ' + btoa(`${userLogin.email}:${userLogin.password}`),
+      }
     );
 
     if (!response) {

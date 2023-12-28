@@ -4,13 +4,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import RootLayout from './layouts/Rootlayout';
 import Home from './pages/Home';
 import Loading from './components/loading/Loading';
 import { fetchData, getDataLength } from './utils/fetchDataModel';
 import Boats from './pages/Boats';
 import Details from './pages/Details';
 import Reservations from './pages/Reservations';
+import RootLayout from './layouts/RootLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
