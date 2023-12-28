@@ -10,6 +10,10 @@ export default {
         colorFour: '#F7D6E0',
         colorFive: '#F2B5D4',
       },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        authForm: '1fr 3fr',
+      },
     },
   },
 };

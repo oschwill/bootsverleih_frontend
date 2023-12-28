@@ -9,21 +9,8 @@ export const manipulateData = async (
   method,
   data,
   setErrorMessage,
-  isJson = false
+  headerContent
 ) => {
-  let headerContent = {
-    'Delete-Me': 'delete',
-    // 'Add-Me': 'add',
-    // 'Edit-Me': 'edit',
-  };
-
-  if (isJson) {
-    headerContent = {
-      'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    };
-  }
-
   const response = await fetch(`${import.meta.env.VITE_FETCH_URL}${urlParameter}`, {
     method: method,
     mode: 'cors',
